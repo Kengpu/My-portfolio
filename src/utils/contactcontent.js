@@ -4,7 +4,7 @@ import Location from "../assets/location.svg";
 
 // New Social Imports
 import facebook from "../assets/facebook.svg";
-import LinkedIn from "../assets/linkedIn.svg";
+import LinkedIn from "../assets/linkedin.svg";
 import Telegram from "../assets/Telegram.svg";
 import Github from "../assets/Github.svg";
 
