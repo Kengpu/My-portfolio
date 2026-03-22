@@ -1,44 +1,31 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/navbar.jsx';
+import Home from './pages/Homepage.jsx';
+import Project from './pages/Projectpage.jsx';
+import About from './pages/Aboutpage.jsx';
+import Contact from './pages/Contactpage.jsx';
+import Footer from './components/footer.jsx'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const headingRef = useRef(null)
-
-  useEffect(() => {
-    // Split text into individual letters manually
-    const heading = headingRef.current
-    const text = heading.textContent
-    heading.innerHTML = text
-      .split('')
-      .map((char) => `<span class="letter">${char}</span>`)
-      .join('')
-
-    // Animate each letter
-    gsap.from('.letter', {
-      duration: 0.8,
-      opacity: 0,
-      y: 50,
-      stagger: 0.05,
-      ease: 'back.out(1.7)',
-    })
-  }, [])
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 ref={headingRef}>Vite + React + GSAP SplitText</h1>
-    </div>
-  )
+  return(
+    <BrowserRouter>
+     <Navbar />
+     
+     <Routes>
+        <Route path = "/" element= {<Home />}/>
+        <Route path = "/projects" element ={<Project />} />
+        <Route path = "/about"  element ={<About />}/>
+        <Route path = "/contact"  element ={<Contact />} />
+     </Routes>
+     
+    <Footer />
+    </BrowserRouter>
+  );
 }
 
 export default App
