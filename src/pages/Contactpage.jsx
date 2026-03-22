@@ -23,11 +23,8 @@ const ContactPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Button click animation
     gsap.to(".submit-btn", { scale: 0.95, duration: 0.1, yoyo: true, repeat: 1 });
 
-    // Discord payload
     const payload = {
       username: "Contact Form Bot",
       embeds: [
@@ -64,40 +61,36 @@ const ContactPage = () => {
   };
 
   return (
-    <div ref={container} className="min-h-screen bg-[#fafafa] font-sans text-[#1a1a1a] pb-32 antialiased overflow-x-hidden">
-      
-      {/* HEADER */}
-      <header className="reveal-header pt-24 pb-12 text-center px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+    <div ref={container} className="min-h-screen bg-[#fafafa] font-sans text-[#1a1a1a] pb-24 sm:pb-32 antialiased overflow-x-hidden pt-10">
+      <header className="reveal-header pt-16 sm:pt-24 pb-8 sm:pb-12 text-center px-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 tracking-tight">
           Get In <span className="bg-linear-to-r from-[#a826ff] to-[#ff33f6] bg-clip-text text-transparent">Touch</span>
         </h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-400 text-base sm:text-lg max-w-xl sm:max-w-2xl mx-auto leading-relaxed">
           Have a project in mind? Let's work together to create something amazing.
         </p>
       </header>
 
-      {/* MAIN CONTENT */}
-      <main className="max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 mt-8">
+      <main className="max-w-6xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 mt-8">
 
-        {/* LEFT SIDE: SOCIAL LINKS + CONTACT INFO */}
-        <div className="space-y-10">
-
+        <div className="space-y-8 sm:space-y-10">
+          
           {/* SOCIAL LINKS */}
           <div className="reveal-item">
-            <h3 className="text-xl font-bold mb-4">Connect With Me</h3>
-            <div className="flex gap-4">
-              {SOCIAL_LINKS.map((link) => (
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Connect With Me</h3>
+            <div className="flex flex-wrap gap-4">
+              {SOCIAL_LINKS.map(link => (
                 <a
                   key={link.id}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 flex items-center justify-center bg-white rounded-2xl border border-gray-100 hover:bg-[#a826ff] hover:-translate-y-1 transition-all duration-300 shadow-sm group"
+                  className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white rounded-2xl border border-gray-100 hover:bg-[#a826ff] hover:-translate-y-1 transition-all duration-300 shadow-sm group"
                 >
                   <img 
                     src={link.icon} 
                     alt={link.name} 
-                    className="w-5 h-5 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300" 
+                    className="w-5 h-5 sm:w-6 sm:h-6 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300" 
                   />
                 </a>
               ))}
@@ -105,63 +98,65 @@ const ContactPage = () => {
           </div>
 
           {/* CONTACT INFO */}
-          <div className="space-y-4">
-            {CONTACT_INFO.map((info) => (
-              <div key={info.id} className="reveal-item flex items-center gap-5 p-5 bg-white rounded-4xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
-                <div className="w-14 h-14 flex items-center justify-center bg-[#f5f7ff] group-hover:bg-[#a826ff] rounded-2xl transition-all duration-300">
+          <div className="space-y-4 sm:space-y-6">
+            {CONTACT_INFO.map(info => (
+              <div key={info.id} className="reveal-item flex items-center gap-4 sm:gap-5 p-4 sm:p-5 bg-white rounded-2xl sm:rounded-4xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-[#f5f7ff] group-hover:bg-[#a826ff] rounded-2xl transition-all duration-300">
                   <img 
                     src={info.icon} 
                     alt={info.label} 
-                    className="w-6 h-6 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                    className="w-5 h-5 sm:w-6 sm:h-6 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
                   />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{info.label}</p>
-                  <p className="text-base font-semibold text-[#2d2d2d]">{info.value}</p>
+                  <p className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest">{info.label}</p>
+                  <p className="text-sm sm:text-base font-semibold text-[#2d2d2d]">{info.value}</p>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
 
-        {/* RIGHT SIDE: FORM */}
-        <div className="reveal-form bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-gray-50">
-          <form onSubmit={handleSubmit} className="p-8 md:p-10 space-y-5">
+        {/* RIGHT: FORM */}
+        <div className="reveal-form bg-white rounded-2xl sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.02)] border border-gray-50">
+          <form onSubmit={handleSubmit} className="p-6 sm:p-8 md:p-10 space-y-4 sm:space-y-5">
             <div className="space-y-1">
-              <label className="text-xs font-bold text-gray-500 ml-2">Full Name</label>
+              <label className="text-xs font-bold text-gray-500 ml-1">Full Name</label>
               <input 
                 type="text" required placeholder="Name"
-                className="w-full px-6 py-4 bg-[#f9f9f9] border border-transparent rounded-2xl focus:bg-white focus:border-[#a826ff] focus:outline-none transition-all"
+                className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#f9f9f9] border border-transparent rounded-2xl focus:bg-white focus:border-[#a826ff] focus:outline-none transition-all"
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
               />
             </div>
             <div className="space-y-1">
-              <label className="text-xs font-bold text-gray-500 ml-2">Email Address</label>
+              <label className="text-xs font-bold text-gray-500 ml-1">Email Address</label>
               <input 
                 type="email" required placeholder="Email"
-                className="w-full px-6 py-4 bg-[#f9f9f9] border border-transparent rounded-2xl focus:bg-white focus:border-[#a826ff] focus:outline-none transition-all"
+                className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#f9f9f9] border border-transparent rounded-2xl focus:bg-white focus:border-[#a826ff] focus:outline-none transition-all"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
             </div>
             <div className="space-y-1">
-              <label className="text-xs font-bold text-gray-500 ml-2">Message</label>
+              <label className="text-xs font-bold text-gray-500 ml-1">Message</label>
               <textarea 
                 rows="4" required placeholder="How can I help?"
-                className="w-full px-6 py-4 bg-[#f9f9f9] border border-transparent rounded-2xl focus:bg-white focus:border-[#a826ff] focus:outline-none transition-all resize-none"
+                className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[#f9f9f9] border border-transparent rounded-2xl focus:bg-white focus:border-[#a826ff] focus:outline-none transition-all resize-none"
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
               ></textarea>
             </div>
             <button 
               type="submit"
-              className="submit-btn w-full py-4 bg-[#a826ff] text-white rounded-3xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg hover:bg-[#8a00e6] transition-all transform active:scale-[0.98] group mt-4"
+              className="submit-btn w-full py-3 sm:py-4 bg-[#a826ff] text-white rounded-2xl sm:rounded-3xl font-bold text-base sm:text-lg flex items-center justify-center gap-2 sm:gap-3 shadow-lg hover:bg-[#8a00e6] transition-all transform active:scale-[0.98]"
             >
               Send Message
             </button>
           </form>
         </div>
+
       </main>
     </div>
   );
