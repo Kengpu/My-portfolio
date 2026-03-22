@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { CONTACT_INFO, SOCIAL_LINKS } from '../utils/contactcontent.js';
 
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1485344567464300635/88KT--6MJiWSi4003tOQQ5Lt--lc19GKSnlzoJVL_uE3BEKv0wB0uCTDQDLjakF_LE3j"; // <-- Replace this
+const DISCORD_WEBHOOK_URL = import.meta.env.VITE_DISCORD_WEBHOOK;
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
